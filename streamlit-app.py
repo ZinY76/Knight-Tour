@@ -1,4 +1,3 @@
-# knights-tour-visualizer_v6
 import streamlit as st
 import numpy as np
 import time
@@ -196,7 +195,7 @@ def main():
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -209,19 +208,21 @@ def main():
             font-size: min(1.6em, 4.5vw);
             margin-bottom: 0.3em;
             width: 100%;
+            padding: 0 10px;
         }
         
         .subtitle {
             text-align: center;
             color: #4f4f4f;
             font-size: min(1.2em, 4vw);
-            margin-bottom: 1.5em;
+            margin-bottom: 1em;
             width: 100%;
+            padding: 0 10px;
         }
         
         /* Chess board styles */
         .chess-board-container {
-            width: min(80vh, 90vw);
+            width: min(min(80vh, 90vw), 600px);
             aspect-ratio: 1;
             margin: 0 auto;
             padding: 0;
@@ -242,6 +243,7 @@ def main():
             display: flex;
             flex: 1;
             width: 100%;
+            min-height: 0;  /* Prevent flex items from expanding */
         }
         
         .board-cell {
@@ -249,9 +251,11 @@ def main():
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: min(1em, 2.5vw);
+            font-size: clamp(8px, min(2.5vw, 2.5vh), 20px);
             font-weight: bold;
             position: relative;
+            min-width: 0;  /* Prevent flex items from expanding */
+            padding: 0;
         }
         
         /* Cell colors */
@@ -276,36 +280,80 @@ def main():
         
         /* Controls section */
         .controls {
-            width: min(80vh, 90vw);
-            margin: 1.5em auto;
+            width: min(min(80vh, 90vw), 600px);
+            margin: 1em auto;
             padding: 1em;
             background: #f8f9fa;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
+        /* Mobile styles */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0.25rem;
+            }
+            
             .chess-board-container {
-                width: 95vw;
+                width: 98vw;
+                max-width: 98vw;
+                margin: 0 auto;
             }
+            
             .controls {
-                width: 95vw;
+                width: 98vw;
+                max-width: 98vw;
+                margin: 0.5em auto;
+                padding: 0.75em;
             }
+            
             .board-cell {
-                font-size: 3vw;
+                font-size: clamp(8px, 3.5vw, 16px);
+            }
+            
+            .title {
+                font-size: 1.4em;
+                margin-bottom: 0.2em;
+            }
+            
+            .subtitle {
+                font-size: 1em;
+                margin-bottom: 0.5em;
             }
         }
         
-        @media (max-height: 800px) {
-            .title {
-                margin-bottom: 0.3em;
+        /* Small height screens */
+        @media screen and (max-height: 600px) {
+            .container {
+                padding: 0.25rem;
             }
-            .subtitle {
-                margin-bottom: 0.8em;
+            
+            .chess-board-container {
+                width: min(98vw, 80vh);
             }
+            
             .controls {
-                margin: 0.8em auto;
+                margin: 0.5em auto;
+                padding: 0.5em;
+            }
+            
+            .title {
+                margin-bottom: 0.2em;
+            }
+            
+            .subtitle {
+                margin-bottom: 0.5em;
+            }
+        }
+        
+        /* Ensure proper display on very small screens */
+        @media screen and (max-width: 320px) {
+            .board-cell {
+                font-size: clamp(6px, 3vw, 12px);
+            }
+            
+            .controls {
+                padding: 0.5em;
             }
         }
         </style>
