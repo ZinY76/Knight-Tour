@@ -374,9 +374,9 @@ def main():
         st.markdown('<div class="controls">', unsafe_allow_html=True)
         col1, col2 = st.columns(2)
         with col1:
-            start_x = st.number_input("Start X (0-7)", min_value=0, max_value=7, value=2)
+            start_x = st.number_input("Start Row (0-7)", min_value=0, max_value=7, value=2)
         with col2:
-            start_y = st.number_input("Start Y (0-7)", min_value=0, max_value=7, value=2)
+            start_y = st.number_input("Start Column (0-7)", min_value=0, max_value=7, value=2)
         
         if st.button("Find Tour", type="primary", use_container_width=True):
             if (start_x, start_y) in {(0, 0), (0, 7), (7, 0), (7, 7)}:
