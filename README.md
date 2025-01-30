@@ -1,4 +1,4 @@
-# Knight60
+# Knight-Tour
 Knight's Tour on Modified 8x8 chessboard with corners removed.
 
 A Streamlit application that visualizes a Knight's Tour on a modified 8x8 chessboard with the four corners removed. The app uses Warnsdorff's algorithm to find a valid tour and provides an interactive visualization of the knight's path. The Python source code was generated using Cascade Write mode in Windsurf.
