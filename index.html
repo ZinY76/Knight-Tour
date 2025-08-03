@@ -13,7 +13,13 @@
     <p>My first paragraph.</p>
 
     <!-- Magic is here! -->
-    <py-script> print('Hello, World!') </py-script>
+    <py-script>
+def print_special(message):
+    print(f'*{message}*')
+
+for i in range(1,11):
+    print_special(f'message_{i}')
+    </py-script>
 
 </body>
 
